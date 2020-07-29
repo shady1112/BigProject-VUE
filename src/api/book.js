@@ -8,6 +8,15 @@ export function login(data) { //登陆
     })
 }
 
+export function registry(data) { //注册
+    return request({
+        url: '/book/login/userLogin',
+        method: 'post',
+        params: data
+    })
+}
+
+
 
 
 
