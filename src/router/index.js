@@ -12,6 +12,10 @@ export default new Router({
             path: '/',
             name: 'index',
             component: () => import('@/views/index'),
+            meta:{
+                // 页面标题title
+                title: '登录页'
+            }
         },
         {
             path: '/bookSort', // 用户
