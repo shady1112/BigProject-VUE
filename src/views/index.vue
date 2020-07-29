@@ -3,10 +3,10 @@
     <el-card class="box-card">
      <div v-for="o in 1" :key="o" class="text item">
        <el-form v-model="ruleForm" status-icon  label-width="100px" class="demo-ruleForm"  @click="submitForm()">
-         <el-form-item label="账号"  prop="loginName">
+         <el-form-item prop="loginName">
            <el-input type="text" class="loginName" v-model="ruleForm.account" autocomplete="off" placeholder="请输入账号"></el-input>
          </el-form-item>
-         <el-form-item label="密码" prop="password">
+         <el-form-item prop="password">
            <el-input type="password" class="password" v-model="ruleForm.password" autocomplete="off" placeholder="请输入密码"></el-input>
          </el-form-item>
 
@@ -91,9 +91,9 @@
     font-size: 24px;
 */
   }
-  .item {
+  /*.item {
     padding: 30px;
-  }
+  }*/
 
   .box-card {
     width: 480px;
@@ -108,7 +108,7 @@
   }
 
   .submit{
-    width: 180px;
+    width: 230px;
     font-size: 15px;
   }
 </style>
