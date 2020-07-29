@@ -62,7 +62,7 @@
           if (this.list.code == 0){
             this.$message({
               type : this.list.success ? "success" : "error",
-              message: this.list.obj.msg
+              message: this.list.obj.msg + '上次登陆时间' + this.list.obj.lastlogin
             });
             this.openFullScreen1();
             setTimeout(() => {
