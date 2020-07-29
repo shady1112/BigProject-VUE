@@ -1,7 +1,7 @@
 <template>
-  <div style="position: absolute;top: 170px;left: 500px;">
+  <div >
     <el-card class="box-card">
-     <div v-for="o in 1" :key="o" class="text item">
+     <div class="text item">
        <el-form v-model="ruleForm" status-icon  label-width="100px" class="demo-ruleForm"  @click="submitForm()">
          <el-form-item prop="loginName">
            <el-input type="text" class="loginName" v-model="ruleForm.account" autocomplete="off" placeholder="请输入账号"></el-input>
@@ -87,16 +87,21 @@
 </script>
 <style>
   .text {
-/*
-    font-size: 24px;
-*/
+    margin-top: 100px;
   }
   /*.item {
     padding: 30px;
   }*/
 
   .box-card {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:0;
+    bottom: 0;
+    margin: auto;
     width: 480px;
+    height: 400px;
   }
 
   .loginName{

@@ -18,7 +18,7 @@ export default new Router({
             }
         },
         {
-            path: '/bookSort', // 用户
+            path: '/bookSort', // 用户‘；，vc9m
             name: 'bookSort',
             component: () => import('@/views/bookSort'),
         },
