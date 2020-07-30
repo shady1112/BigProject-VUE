@@ -1,5 +1,9 @@
 <template>
-  <div >
+  <div>
+    <div class="background">
+      <img :src="imgSrc" width="100%" height="100%" alt="" />
+    </div>
+    <div>
     <el-card class="box-card">
       <img src="../assets/159602672991491.png" style="width: 200px;height: 50px; margin-left: 115px;margin-top: 40px "/>
      <div class="text item">
@@ -14,22 +18,26 @@
          <el-form-item>
            <el-button type="primary" class="submit"
                       @click="submitForm()"
-                      v-loading.fullscreen.lock="fullscreenLoading">登陆</el-button>
+                      v-loading.fullscreen.lock="fullscreenLoading">
+             <font style="font-family: myFont3;font-weight: 600;font-size: 18px">登 陆</font></el-button>
          </el-form-item>
          <br>
        </el-form>
-       <el-divider>或</el-divider>
-       <font class="fonts">没有账户？<el-button type="text"  style="font-size: 16px" @click="dialogVisible = true">注册</el-button></font>
+       <el-divider><font style="font-family: myFont3;font-size: 18px;font-weight: 600">或</font></el-divider>
+       <font class="fonts">没有账户？<el-button type="text"  style="font-size: 20px;font-family: myFont2;font-weight: 600" @click="dialogVisible = true">注册</el-button></font>
      </div>
     </el-card>
 
     <el-dialog
             title="注册"
             :visible.sync="dialogVisible"
-            width="15%"
+            width="18%"
             >
+
       <div class="registeryDialog">
-      <el-form v-model="registryForm">
+        <img src="../assets/159602672991491.png" style="width: 200px;height: 50px ;margin-top: 10px;margin-bottom: 15px "/>
+
+        <el-form v-model="registryForm">
         <el-form-item prop="loginName">
           <el-input type="text" class="loginName" v-model="registryForm.newAccount" autocomplete="off" placeholder="请输入账号"></el-input>
           <el-popover
@@ -52,19 +60,34 @@
         </el-form-item>
         <el-form-item prop="password">
           <el-input type="password" class="password" v-model="registryForm.newPassword2" autocomplete="off" placeholder="请确认密码"></el-input>
+          <el-popover
+                  placement="top-start"
+                  width="200"
+                  trigger="hover"
+                  content="确认您的密码！">
+            <i class="el-icon-warning-outline" style="font-size: 20px" slot="reference"></i>
+          </el-popover>
         </el-form-item>
 
         <el-form-item>
           <el-button type="primary" class="submit"
                      @click="registry()"
                      v-loading.fullscreen.lock="fullscreenLoading">注册</el-button>
+          <el-popover
+                  placement="top-start"
+                  width="200"
+                  trigger="hover"
+                  content="确认您的密码！">
+            <i class="el-icon-warning-outline" style="font-size: 20px;visibility:hidden;" slot="reference"></i>
+          </el-popover>
+
         </el-form-item>
       </el-form>
       </div>
       <span slot="footer" class="dialog-footer">
-
   </span>
     </el-dialog>
+    </div>
   </div>
 </template>
 <script>
@@ -84,8 +107,8 @@
           newPassword2:null,
         },
         fullscreenLoading: false,
-        dialogVisible: false
-
+        dialogVisible: false,
+        imgSrc:require('../assets/timg.jpg')
 
       }
 
@@ -144,8 +167,21 @@
           return null;
         }
         registry({account: this.registryForm.newAccount,password: this.registryForm.newPassword}).then(res=>{
-
-
+          this.list = res.data
+          this.code = res.data.success
+          if (this.code==true){
+            this.$message({
+              type :  "success",
+              message: res.data.obj.msg
+            });
+            this.dialogVisible=false
+          }
+          if (this.code==false){
+            this.$message({
+              type :  "success",
+              message: res.data.msg
+            });
+          }
         })
       },
       submitForm(){
@@ -173,7 +209,6 @@
 
         login({account: this.ruleForm.account,password: this.ruleForm.password }).then( res=> {
           this.list = res.data
-          console.log(this.list)
 
           if (this.list.code == 0){
             this.$message({
@@ -208,7 +243,13 @@
   /*.item {
     padding: 30px;
   }*/
+  .background{
+    width:100%;
+    height:100%;
+    z-index:-1;
 
+
+  }
   .box-card {
     position: absolute;
     left: 0;
@@ -218,6 +259,8 @@
     margin: auto;
     width: 480px;
     height: 500px;
+    box-shadow: 2px 2px 10px #d3dce6;
+
   }
 
   .loginName{
@@ -233,14 +276,24 @@
     font-size: 15px;
   }
   .fonts{
-    font-family: myFont;
+    font-family: myFont3;
     margin-left: 160px;
+    font-weight: 600;
   }
   .registeryDialog{
-    margin-left: 60px;
+    text-align: center;
+    margin: 0 auto;
   }
   @font-face {
-    font-family: myFont;
+    font-family: myFont1;
     src: url("../assets/Heptal-Bold.ttf");
+  }
+  @font-face {
+    font-family: myFont2;
+    src: url("../assets/blackSimple.ttf");
+  }
+  @font-face {
+    font-family: myFont3;
+    src: url("../assets/microRice.otf");
   }
 </style>
