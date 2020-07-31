@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div >
     <div class="background">
-      <img :src="imgSrc" width="100%" height="100%" alt="" />
+      <img :src="imgSrc" width="100%" height="100%"  />
     </div>
     <div>
     <el-card class="box-card">
@@ -68,18 +68,28 @@
             <i class="el-icon-warning-outline" style="font-size: 20px" slot="reference"></i>
           </el-popover>
         </el-form-item>
-
+          <el-form-item prop="password">
+            <el-input  class="password" v-model="registryForm.mail" autocomplete="off" placeholder="请输入邮箱"></el-input>
+            <el-popover
+                placement="top-start"
+                width="200"
+                trigger="hover"
+                content="请输入您的电子邮箱！">
+              <i class="el-icon-warning-outline" style="font-size: 20px" slot="reference"></i>
+            </el-popover>
+          </el-form-item>
+          <el-form-item prop="password">
+            <el-input  class="password" v-model="registryForm.code" style="width: 140px" placeholder="请输入验证码"></el-input>
+            <el-button type="primary" class="submit"
+                       @click="sendMail()"
+                       style="width: 110px"
+                       v-loading.fullscreen.lock="fullscreenLoading" plain>获取验证码</el-button>
+          </el-form-item>
         <el-form-item>
           <el-button type="primary" class="submit"
                      @click="registry()"
+                     style="width: 260px"
                      v-loading.fullscreen.lock="fullscreenLoading">注册</el-button>
-          <el-popover
-                  placement="top-start"
-                  width="200"
-                  trigger="hover"
-                  content="确认您的密码！">
-            <i class="el-icon-warning-outline" style="font-size: 20px;visibility:hidden;" slot="reference"></i>
-          </el-popover>
 
         </el-form-item>
       </el-form>
@@ -91,7 +101,7 @@
   </div>
 </template>
 <script>
-  import { login, registry }from '../api/book'
+  import { login, registry, sendMail }from '../api/book'
   import { Loading } from 'element-ui';
   export default {
     data() {
@@ -105,10 +115,12 @@
           newAccount:null,
           newPassword:null,
           newPassword2:null,
+          mail:null,
+          code:null
         },
         fullscreenLoading: false,
         dialogVisible: false,
-        imgSrc:require('../assets/timg.jpg')
+        imgSrc:require('../assets/timg111.jpg')
 
       }
 
@@ -184,6 +196,28 @@
           }
         })
       },
+      sendMail(){
+        sendMail({userMail:this.registryForm.mail, code: this.registryForm.code}).then(res=>{
+         var mail = this.registryForm.mail
+          if (res.data.success == true){
+            this.$message({
+              type :  "success",
+              message: res.data.msg
+            });
+            if(mail.indexOf("qq")!=-1){
+              window.open("https://mail.qq.com/")
+            }
+            if(mail.indexOf("163")!=-1){
+              window.open("https://mail.163.com/")
+            }
+          }else {
+            this.$message({
+              type :  "error",
+              message: res.data.msg
+            });
+          }
+        })
+      },
       submitForm(){
         if (this.ruleForm.account==null && this.ruleForm.password==null){
           this.$message({
@@ -237,19 +271,20 @@
   }
 </script>
 <style>
+  .background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+  }
   .text {
     margin-top: 20px;
   }
   /*.item {
     padding: 30px;
   }*/
-  .background{
-    width:100%;
-    height:100%;
-    z-index:-1;
 
-
-  }
   .box-card {
     position: absolute;
     left: 0;

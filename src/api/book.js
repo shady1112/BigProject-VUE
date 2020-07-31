@@ -16,6 +16,15 @@ export function registry(data) { //注册
     })
 }
 
+export function sendMail(data) { //注册
+    return request({
+        url: '/book/login/sendMail',
+        method: 'post',
+        params: data
+    })
+}
+
+
 
 
 
