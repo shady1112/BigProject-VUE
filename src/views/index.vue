@@ -2,16 +2,16 @@
   <div >
     <vue-particles
         color="#dedede"
-        :particleOpacity="0.7"
-        :particlesNumber="90"
+        :particleOpacity="0.6"
+        :particlesNumber="50"
         shapeType="circle"
-        :particleSize="4"
+        :particleSize="7"
         linesColor="#dedede"
         :linesWidth="1"
         :lineLinked="true"
         :lineOpacity="0.4"
-        :linesDistance="150"
-        :moveSpeed="3"
+        :linesDistance="200"
+        :moveSpeed="1"
         :hoverEffect="true"
         hoverMode="grab"
         :clickEffect="true"
@@ -20,7 +20,7 @@
     >
     </vue-particles>
     <div>
-    <el-card class="box-card">
+    <el-card class="box-card" shadow="hover">
       <img src="../assets/159602672991491.png" style="width: 200px;height: 50px; margin-left: 115px;margin-top: 40px "/>
      <div class="text item">
        <el-form v-model="ruleForm" status-icon  label-width="100px" class="demo-ruleForm"  @click="submitForm()">
