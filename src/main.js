@@ -7,6 +7,8 @@ import VueResource from 'vue-resource'//从node_modules里边把vue-resource引�
 import VueMeta from 'vue-meta'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import VueParticles from 'vue-particles'
+Vue.use(VueParticles)
 Vue.use(VueMeta)
 Vue.use(ElementUI);
 Vue.config.productionTip = false;

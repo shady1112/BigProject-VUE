@@ -1,8 +1,24 @@
 <template>
   <div >
-    <div class="background">
-      <img :src="imgSrc" width="100%" height="100%"  />
-    </div>
+    <vue-particles
+        color="#dedede"
+        :particleOpacity="0.7"
+        :particlesNumber="90"
+        shapeType="circle"
+        :particleSize="4"
+        linesColor="#dedede"
+        :linesWidth="1"
+        :lineLinked="true"
+        :lineOpacity="0.4"
+        :linesDistance="150"
+        :moveSpeed="3"
+        :hoverEffect="true"
+        hoverMode="grab"
+        :clickEffect="true"
+        clickMode="push"
+        CLASS="background"
+    >
+    </vue-particles>
     <div>
     <el-card class="box-card">
       <img src="../assets/159602672991491.png" style="width: 200px;height: 50px; margin-left: 115px;margin-top: 40px "/>
@@ -120,7 +136,7 @@
         },
         fullscreenLoading: false,
         dialogVisible: false,
-        imgSrc:require('../assets/timg111.jpg')
+        imgSrc:require('../assets/timg (2).jpg')
 
       }
 
@@ -272,6 +288,7 @@
 </script>
 <style>
   .background {
+    background-image: url('../assets/timg (2).jpg');
     position: fixed;
     width: 100%;
     height: 100%;
