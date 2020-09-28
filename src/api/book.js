@@ -16,13 +16,22 @@ export function registry(data) { //注册
     })
 }
 
-export function sendMail(data) { //注册
+export function sendMail(data) { //发送邮件
     return request({
         url: '/book/login/sendMail',
         method: 'post',
         params: data
     })
 }
+
+export function resetPwd(data) { //密码重置
+    return request({
+        url: '/book/login/resetPwd',
+        method: 'post',
+        params: data
+    })
+}
+
 
 
 
