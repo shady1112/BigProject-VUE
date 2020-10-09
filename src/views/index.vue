@@ -22,11 +22,11 @@
     </vue-particles>
     <div>
       <el-card class="box-card" shadow="hover">
-        <img src="../assets/159602672991491.png"
+        <img src="../assets/160221494528838.png"
              style="width: 200px;height: 50px; margin-left: 115px;margin-top: 40px "/>
         <div class="text item">
           <!-- 登陆表单-->
-          <el-form v-model="ruleForm" status-icon label-width="100px" class="demo-ruleForm" @click="submitForm()">
+          <el-form v-model="ruleForm" status-icon label-width="17%" class="demo-ruleForm" @click="submitForm()">
             <el-form-item prop="loginName">
               <el-input type="text" class="loginName" v-model="ruleForm.account" autocomplete="off"
                         placeholder="请输入账号"></el-input>
@@ -66,7 +66,7 @@
           width="18%"
       >
         <div class="registeryDialog">
-          <img src="../assets/159602672991491.png"
+          <img src="../assets/160221494528838.png"
                style="width: 200px;height: 50px ;margin-top: 10px;margin-bottom: 15px "/>
 
           <el-form v-model="registryForm">
@@ -114,18 +114,17 @@
               </el-popover>
             </el-form-item>
             <el-form-item prop="password">
-              <el-input class="password" v-model="code" style="width: 140px"
+              <el-input class="inputCode" v-model="code"
                         placeholder="请输入验证码"></el-input>
-              <el-button type="primary" class="submit"
+              <el-button type="primary" class="getCode"
                          @click="sendMail()"
-                         style="width: 110px"
                          v-loading.fullscreen.lock="fullscreenLoading" plain>获取验证码
               </el-button>
             </el-form-item>
             <el-form-item>
               <el-button type="primary" class="submit"
                          @click="registry()"
-                         style="font-family: myFont3;font-weight: 600;font-size: 18px"
+                         style="font-family: myFont3;font-weight: 600;font-size: 18px;width: 90%"
                          v-loading.fullscreen.lock="fullscreenLoading">注册
               </el-button>
 
@@ -142,7 +141,7 @@
           width="18%"
       >
         <div class="registeryDialog">
-          <img src="../assets/159602672991491.png"
+          <img src="../assets/160221494528838.png"
                style="width: 200px;height: 50px ;margin-top: 10px;margin-bottom: 15px "/>
           <el-form v-model="resetForm">
             <el-form-item prop="loginName">
@@ -190,18 +189,17 @@
               </el-popover>
             </el-form-item>
             <el-form-item prop="password">
-              <el-input class="password" v-model="code" style="width: 140px"
+              <el-input class="inputCode" v-model="code"
                         placeholder="请输入验证码"></el-input>
-              <el-button type="primary" class="submit"
+              <el-button type="primary" class="getCode"
                          @click="sendMail()"
-                         style="width: 110px"
                          v-loading.fullscreen.lock="fullscreenLoading" plain>获取验证码
               </el-button>
             </el-form-item>
             <el-form-item>
               <el-button type="primary" class="submit"
                          @click="resetPwd()"
-                         style="font-family: myFont3;font-weight: 600;font-size: 18px"
+                         style="font-family: myFont3;font-weight: 600;font-size: 18px;width: 90%"
                          v-loading.fullscreen.lock="fullscreenLoading">重置密码
               </el-button>
 
@@ -317,15 +315,7 @@ export default {
        }
      })
     },
-    handleClose(done) {
-      this.$confirm('确认关闭？')
-          .then(_ => {
-            done();
-          })
-          .catch(_ => {
-          });
 
-    },
     openFullScreen1() {
       this.fullscreenLoading = true;
 
@@ -458,7 +448,7 @@ export default {
           this.openFullScreen1();
           setTimeout(() => {
             this.$router.push({
-              path: '/booksort',
+              path: '/homePage',
             })
           }, 2000);
 
@@ -508,21 +498,29 @@ export default {
 }
 
 .loginName {
-  width: 230px;
+  width:80%;
 }
 
 .password {
-  width: 230px;
+  width:80%;
+}
+.inputCode {
+  width:47%;
 }
 
+.getCode {
+  width:40%;
+}
+
+
 .submit {
-  width: 230px;
+  width: 80%;
   font-size: 15px;
 }
 
 .fonts {
   font-family: myFont3;
-  margin-left: 160px;
+  margin-left: 35%;
   font-weight: 600;
 }
 
@@ -533,7 +531,7 @@ export default {
 
 .forgotPWD {
   background-color: darkturquoise;
-  width: 230px;
+  width: 80%;
 }
 
 /*引入自定义文字样式*/
@@ -547,10 +545,10 @@ export default {
   src: url("../assets/blackSimple.ttf");
 }
 
-@font-face {
-  font-family: myFont3;
-  src: url("../assets/microRice.otf");
-}
+  @font-face {
+    font-family: myFont3;
+    src: url("../assets/microRice.otf");
+  }
 
 /*修改输入框提示文字样式*/
 input::placeholder {

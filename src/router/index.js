@@ -17,15 +17,17 @@ export default new Router({
                 title: '登录页'
             }
         },
-        {
-            path: '/bookSort', // 用户‘；，vc9m
-            name: 'bookSort',
-            component: () => import('@/views/bookSort'),
-        },
+
         {
             path: '/homePage', // 用户
             name: 'homePage',
             component: () => import('@/views/homePage'),
+        },
+
+        {
+            path: '/CreateOffer', // 用户
+            name: 'CreateOffer',
+            component: () => import('@/views/CreateOffer'),
         },
 
 
