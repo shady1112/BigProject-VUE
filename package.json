@@ -7,6 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
+  "homepage": "https://shady1112.github.io/BigProject-VUE/",
   "dependencies": {
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
@@ -36,6 +37,7 @@
     "vue-i18n": "7.3.2",
     "vue-meta": "^2.3.1",
     "vue-monoplasty-slide-verify": "^1.0.5",
+    "vue-quill-editor": "^3.0.6",
     "vue-resource": "^1.5.1",
     "vue-router": "3.0.2",
     "vue-splitpane": "1.0.4",

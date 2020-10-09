@@ -6,7 +6,7 @@ function resolve(dir) {
     return path.join(__dirname, dir)
 }
 const name = defaultSettings.title || 'vue Admin Template' // page title
-
+const publicPath = process.env.NODE_ENV === "production" ? "/BigProject-VUE" : "/"
 const port = process.env.port || process.env.npm_config_port || 9528 // dev port
 module.exports = {
     runtimeCompiler:true,
