@@ -31,9 +31,9 @@ module.exports = {
         },
         proxy: {
             '/book': {// 后台接口
-                target: 'http://127.0.0.1:8081',
+                target: 'http://106.12.182.12:8081',
                 pathRewrite: {
-                    '^/book': 'http://127.0.0.1:8081'
+                    '^/book': 'http://106.12.182.12:8081'
                 },
                 changeOrigin: true
             }
