@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
-  "homepage": "https://shady1112.github.io/BigProject-VUE/",
+  "homepage": "https://shady1112.github.io/",
   "dependencies": {
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
