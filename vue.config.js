@@ -8,6 +8,7 @@ function resolve(dir) {
 const name = defaultSettings.title || 'vue Admin Template' // page title
 const port = process.env.port || process.env.npm_config_port || 9528 // dev port
 module.exports = {
+    baseUrl: '/',
     runtimeCompiler:true,
     /**
      * You will need to set publicPath if you plan to deploy your site under a sub path,
@@ -30,10 +31,10 @@ module.exports = {
             errors: true
         },
         proxy: {
-            '/book': {// 后台接口
+            '/106.12.182.12:8081': {// 后台接口
                 target: 'http://106.12.182.12:8081',
                 pathRewrite: {
-                    '^/book': 'http://106.12.182.12:8081'
+                    '^/106.12.182.12:8081': 'http://106.12.182.12:8081'
                 },
                 changeOrigin: true
             }
