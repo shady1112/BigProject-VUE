@@ -6,7 +6,7 @@
         :particleOpacity="0.6"
         :particlesNumber="50"
         shapeType="circle"
-        :particleSize="7"
+        :particleSize="2"
         linesColor="#dedede"
         :linesWidth="1"
         :lineLinked="true"

@@ -31,10 +31,10 @@ module.exports = {
             errors: true
         },
         proxy: {
-            '/106.12.182.12:8081': {// 后台接口
-                target: 'http://106.12.182.12:8081',
+            '/resolver': {// 后台接口
+                target: 'http://127.0.0.1:8081',
                 pathRewrite: {
-                    '^/106.12.182.12:8081': 'http://106.12.182.12:8081'
+                    '^/resolver': 'http://127.0.0.1:8081'
                 },
                 changeOrigin: true
             }

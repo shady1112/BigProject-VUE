@@ -22,6 +22,10 @@ export default new Router({
             path: '/homePage', // 用户
             name: 'homePage',
             component: () => import('@/views/homePage'),
+            meta:{
+                // 页面标题title
+                title: '首页'
+            }
         },
 
         {
