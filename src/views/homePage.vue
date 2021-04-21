@@ -1,17 +1,16 @@
 <template>
   <div>
     <el-menu :default-active="activeIndex" mode="horizontal" @select="handleSelect">
-      <el-menu-item index="1" class="topbar">
-        <i class="el-icon-menu"></i>
-        <span slot="title">个人中心</span>
-      </el-menu-item>
-      <el-menu-item index="2" class="topbar">
-        <i class="el-icon-document"></i>
-        <span slot="title">天气</span>
-      </el-menu-item>
+      <el-submenu index="1" class="topbar">
+        <template slot="title"><span class="topBarStyle">个人中心</span></template>
+        <el-menu-item index="2-1"><span class="topBarStyle">账号信息</span></el-menu-item>
+        <el-menu-item index="2-2"><span class="topBarStyle">我的悬赏</span></el-menu-item>
+        <el-menu-item index="2-3"><span class="topBarStyle">积分信息</span></el-menu-item>
+      </el-submenu>
+
       <el-menu-item index="3" class="topbar">
         <i class="el-icon-alarm-clock"></i>
-        <span slot="title">
+        <span slot="title" class="topBarStyle">
           现在是 {{ date }}
         </span>
       </el-menu-item>
@@ -190,6 +189,12 @@ export default {
 
 .topbar {
   text-align: right;
+}
+
+.topBarStyle{
+  font-family: myFont3;
+  font-weight: 600;
+  font-size: 20px;
 }
 
 @font-face {
