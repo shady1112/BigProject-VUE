@@ -215,6 +215,7 @@
 <script>
 import {login, registry, sendMail, resetPwd} from '../api/book'
 import {Loading} from 'element-ui';
+import Cookies from 'js-cookie'
 
 export default {
   data() {
@@ -244,7 +245,38 @@ export default {
     }
 
   },
+  created() {
+    this.autoLogin();
+  },
   methods: {
+    autoLogin(){
+      var keyName = "account";
+      var account = Cookies.get(keyName)
+      login({account: account}).then(res => {
+        this.list = res.data
+
+        if (this.list.returnCode == "0000") {
+          this.$message({
+            type: this.list.returnMsg ? "SUCCESS" : "error",
+            message: this.list.returnMsg + '上次登陆时间' + this.list.lastlogin
+          });
+          this.openFullScreen1();
+          setTimeout(() => {
+            this.$router.push({
+              path: '/homePage',
+            })
+          }, 2000);
+
+        } else {
+          this.$message({
+            type: this.list.success ? "success" : "error",
+            message: this.list.returnMsg
+          });
+        }
+      })
+    },
+
+
     //重置密码
     resetPwd() {
       if(this.resetForm.Account==null){
@@ -439,11 +471,12 @@ export default {
 
       login({account: this.ruleForm.account, password: this.ruleForm.password}).then(res => {
         this.list = res.data
-
-        if (this.list.code == 0) {
+        console.log(res.data)
+        if (res.data.returnCode == "0000") {
+          Cookies.set('account',this.ruleForm.account);
           this.$message({
-            type: this.list.success ? "success" : "error",
-            message: this.list.obj.msg + '上次登陆时间' + this.list.obj.lastlogin
+            type: this.list.success ? "SUCCESS" : "error",
+            message: this.list.returnMsg + '上次登陆时间' + this.list.lastlogin
           });
           this.openFullScreen1();
           setTimeout(() => {
@@ -454,8 +487,8 @@ export default {
 
         } else {
           this.$message({
-            type: this.list.success ? "success" : "error",
-            message: this.list.msg
+            type: this.list.success ? "SUCCESS" : "error",
+            message: this.list.returnMsg
           });
         }
 
@@ -494,7 +527,8 @@ export default {
   width: 460px;
   height: 600px;
   box-shadow: 2px 2px 10px #d3dce6;
-
+  background-color: gray;
+  border: gray;
 }
 
 .loginName {

@@ -32,9 +32,9 @@ module.exports = {
         },
         proxy: {
             '/resolver': {// 后台接口
-                target: 'http://127.0.0.1:8081',
+                target: 'http://127.0.0.1:8082',
                 pathRewrite: {
-                    '^/resolver': 'http://127.0.0.1:8081'
+                    '^/resolver': 'http://127.0.0.1:8082'
                 },
                 changeOrigin: true
             }
