@@ -64,15 +64,25 @@
           title="账号注册"
           :visible.sync="dialogVisible"
           width="18%"
+          style="font-family: myFont3;font-weight: 600;font-size: 20px"
       >
         <div class="registeryDialog">
           <img src="../assets/160221494528838.png"
                style="width: 200px;height: 50px ;margin-top: 10px;margin-bottom: 15px "/>
 
           <el-form v-model="registryForm">
+            <el-form-item prop="password">
+              <el-input class="inputCode" v-model="code"
+                        placeholder="请输入用户名"></el-input>
+              <el-button type="primary" class="getCode"
+                         @click="checkNickName()"
+                         v-loading.fullscreen.lock="fullscreenLoading" plain>检查
+              </el-button>
+            </el-form-item>
+
             <el-form-item prop="loginName">
               <el-input type="text" class="loginName" v-model="registryForm.newAccount" autocomplete="off"
-                        placeholder="请输入账号"></el-input>
+                        placeholder="请输入账号" ></el-input>
               <el-popover
                   placement="top-start"
                   width="200"
@@ -249,6 +259,16 @@ export default {
     this.autoLogin();
   },
   methods: {
+    // http://mishengqiang.com/sweetalert2/
+
+    checkNickName(){
+      this.$swal({
+        icon: 'success',
+        text: '最新数据更新成功!',
+        confirmButtonText: '好的'
+    })
+    },
+
     autoLogin(){
       var keyName = "account";
       var account = Cookies.get(keyName)

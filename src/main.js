@@ -13,6 +13,14 @@ Vue.use(VueMeta)
 Vue.use(ElementUI);
 Vue.config.productionTip = false;
 Vue.use(VueResource)
+import VueSweetalert2 from 'vue-sweetalert2';
+
+const options = {
+  confirmButtonColor: '#41b882',
+  cancelButtonColor: '#ff7674',
+};
+
+Vue.use(VueSweetalert2, options);
 
 //这样以后，就可以在任何组件页面中使用http了
 /* eslint-disable no-new */
