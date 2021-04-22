@@ -1,8 +1,12 @@
 <template>
   <div>
-    <el-menu :default-active="activeIndex" mode="horizontal" @select="handleSelect">
+    <el-menu :default-active="activeIndex" mode="horizontal" @select="handleSelect" background-color="gray" text-color="white">
+
       <el-submenu index="1" class="topbar">
-        <template slot="title"><span class="topBarStyle">个人中心</span></template>
+
+        <template slot="title">
+          <el-avatar :size="40" :src="circleUrl"></el-avatar>
+          <span class="topBarStyle">个人中心</span></template>
         <el-menu-item index="2-1"><span class="topBarStyle">账号信息</span></el-menu-item>
         <el-menu-item index="2-2"><span class="topBarStyle">我的悬赏</span></el-menu-item>
         <el-menu-item index="2-3"><span class="topBarStyle">积分信息</span></el-menu-item>
@@ -12,6 +16,21 @@
         <i class="el-icon-alarm-clock"></i>
         <span slot="title" class="topBarStyle">
           现在是 {{ date }}
+        </span>
+      </el-menu-item>
+
+
+      <el-menu-item index="4" class="topbar">
+        <span slot="title" class="topBarStyle">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+      </el-menu-item>
+
+      <el-menu-item index="5" class="topbar" @click="exit()">
+        <i class="el-icon-upload2" style="color: #d3dce6;size: 20px"> </i>
+        <span slot="title" class="topBarStyle">
+          退出登录
         </span>
       </el-menu-item>
     </el-menu>
@@ -105,6 +124,7 @@ import {quillEditor} from 'vue-quill-editor'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
+import Cookies from 'js-cookie'
 
 export default {
   components: {
@@ -156,7 +176,12 @@ export default {
     }
   },
   methods: {
-
+    exit() {
+      Cookies.remove("account");
+      this.$router.push({
+        path: '/',
+      })
+    },
 
 
 

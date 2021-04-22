@@ -252,12 +252,16 @@ export default {
     autoLogin(){
       var keyName = "account";
       var account = Cookies.get(keyName)
+
+      if (account==null){
+        return ;
+      }
       login({account: account}).then(res => {
         this.list = res.data
 
         if (this.list.returnCode == "0000") {
           this.$message({
-            type: this.list.returnMsg ? "SUCCESS" : "error",
+            type: "success" ,
             message: this.list.returnMsg + '上次登陆时间' + this.list.lastlogin
           });
           this.openFullScreen1();
@@ -269,7 +273,7 @@ export default {
 
         } else {
           this.$message({
-            type: this.list.success ? "success" : "error",
+            type:  "error",
             message: this.list.returnMsg
           });
         }
